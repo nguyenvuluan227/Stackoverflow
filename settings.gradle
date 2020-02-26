@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':base', ':domain', ':data'
 rootProject.name='Stackoverflow'

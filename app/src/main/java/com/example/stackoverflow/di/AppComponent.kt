@@ -1,0 +1,34 @@
+package com.example.stackoverflow.di
+
+import android.app.Application
+import com.example.stackoverflow.App
+import com.example.stackoverflow.MainModule
+import dagger.BindsInstance
+import dagger.Component
+import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
+import javax.inject.Singleton
+
+
+@Singleton
+@Component(
+    modules = [
+        AppModule::class,
+        AppBindingModule::class,
+        AndroidSupportInjectionModule::class,
+        MainModule::class
+    ]
+)
+interface AppComponent : AndroidInjector<App> {
+
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        fun application(app: App): Builder
+
+        fun build(): AppComponent
+    }
+
+    fun inject(application: Application)
+}
