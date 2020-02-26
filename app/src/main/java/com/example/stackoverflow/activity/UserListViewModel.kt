@@ -18,7 +18,7 @@ class UserListViewModel(private val getUserListUseCase: GetUserListUseCase) :
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    Log.d("USER_LIST_VIEW_MODEL", "HAS DATA")
+                    Log.d("getListUser", "HAS DATA")
                     setState {
                         copy(
                             error = Event(false),
@@ -28,7 +28,7 @@ class UserListViewModel(private val getUserListUseCase: GetUserListUseCase) :
                 },
                 {
                     it.printStackTrace()
-                    Log.d("USER_LIST_VIEW_MODEL", "NO DATA")
+                    Log.d("getListUser", "NO DATA")
                     setState {
                         copy(error = Event(true))
                     }
