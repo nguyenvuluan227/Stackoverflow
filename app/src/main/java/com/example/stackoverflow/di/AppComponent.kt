@@ -1,6 +1,9 @@
 package com.example.stackoverflow.di
 
 import android.app.Application
+import com.example.data.di.RemoteModule
+import com.example.data.di.RemoteUserModule
+import com.example.data.di.RepositoryModule
 import com.example.stackoverflow.App
 import com.example.stackoverflow.MainModule
 import dagger.BindsInstance
@@ -15,6 +18,9 @@ import javax.inject.Singleton
     modules = [
         AppModule::class,
         AppBindingModule::class,
+        RemoteModule::class,
+        RemoteUserModule::class,
+        RepositoryModule::class,
         AndroidSupportInjectionModule::class,
         MainModule::class
     ]
