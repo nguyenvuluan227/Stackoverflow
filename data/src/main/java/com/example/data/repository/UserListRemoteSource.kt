@@ -12,8 +12,8 @@ class UserListRemoteSource @Inject constructor(
     private val userApiMapper: UserApiMapper
 ) :
     UserListRepository {
-    override fun getListUser(page: Int, pageSize: Int): Single<User> {
-        return userListService.getUserList(page, pageSize).map {
+    override fun getListUser(page: Int, pageSize: Int, pageSite: String): Single<User> {
+        return userListService.getUserList(page, pageSize, pageSite).map {
             userApiMapper.mapToDomain(it)
         }
     }

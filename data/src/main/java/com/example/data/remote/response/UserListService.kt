@@ -10,6 +10,7 @@ interface UserListService {
     @GET("2.2/users")
     fun getUserList(
         @Query("page") page: Int,
-        @Query("pagesize") pageSize: Int
+        @Query("pagesize") pageSize: Int,
+        @Query("site") pageSite: String
     ): Single<UserApi>
 }

@@ -9,7 +9,7 @@ class ItemApiMapper @Inject constructor(
 ) {
     fun mapToDomain(api: ItemApi): Item {
         return Item(
-            badgeCounts = badgeCountsApiMapper.mapToDomain(api.badgeCounts),
+            badgeCounts = badgeCountsApiMapper.mapToDomain(api.badgeCounts!!),
             accountId = api.accountId,
             isEmployee = api.isEmployee,
             lastModifiedDate = api.lastModifiedDate,
