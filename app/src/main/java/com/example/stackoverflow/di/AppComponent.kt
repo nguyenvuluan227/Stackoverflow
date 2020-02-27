@@ -5,7 +5,7 @@ import com.example.data.di.RemoteModule
 import com.example.data.di.RemoteUserModule
 import com.example.data.di.RepositoryModule
 import com.example.stackoverflow.App
-import com.example.stackoverflow.MainModule
+import com.example.stackoverflow.activity.main.MainModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

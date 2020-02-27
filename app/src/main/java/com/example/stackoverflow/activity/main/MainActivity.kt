@@ -1,10 +1,10 @@
-package com.example.stackoverflow
+package com.example.stackoverflow.activity.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.stackoverflow.activity.main.UserListViewModel
+import com.example.stackoverflow.R
 import com.example.stackoverflow.activity.main.adapter.UserListAdapter
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector

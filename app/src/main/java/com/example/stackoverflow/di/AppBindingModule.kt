@@ -1,7 +1,7 @@
 package com.example.stackoverflow.di
 
-import com.example.stackoverflow.MainActivity
-import com.example.stackoverflow.MainModule
+import com.example.stackoverflow.activity.main.MainActivity
+import com.example.stackoverflow.activity.main.MainModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
