@@ -39,9 +39,8 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         }
 
         recyclerView.layoutManager = linearLayout
-        recyclerView.adapter = adapter.apply {
-
-        }
+        recyclerView.adapter = adapter
+        
         viewModel.state.observe(this, Observer {
             adapter.submitList(it.uiItems)
         })
