@@ -1,4 +1,4 @@
-package com.example.stackoverflow.activity.adapter
+package com.example.stackoverflow.activity.main.adapter
 
 import android.content.Context
 import android.view.ViewGroup
@@ -20,7 +20,9 @@ class UserListAdapter @Inject constructor(@ActivityContext context: Context) :
         return when (viewType) {
             ITEM_USER -> {
                 val itemView = inflater.inflate(R.layout.item_user_list, parent, false)
-                UserViewHolder(itemView)
+                UserViewHolder(
+                    itemView
+                )
             }
             else -> throw IllegalArgumentException("Do not support view type: $viewType")
         }

@@ -32,24 +32,18 @@ class UserListViewModel(private val getUserListUseCase: GetUserListUseCase) :
                 {
                     it.printStackTrace()
                     Log.d("getListUser", "NO DATA")
-                    setState {
-                        copy(error = Event(true))
-                    }
+                    setState { copy(error = Event(true)) }
                 }
             ).addToDisposables()
     }
 
     private fun convertDataToUI(userList: List<Item>): List<DisplayableItem> {
-        return userList.map {
-            UserItem(
-                it
-            )
-        }
+        return userList.map { UserItem(it) }
     }
-
 }
 
 data class UserListState(
     val error: Event<Boolean>? = null,
-    val uiItems: List<DisplayableItem> = listOf()
+    val uiItems: List<DisplayableItem> = listOf(),
+    val isLoading: Event<Boolean>? = null
 )

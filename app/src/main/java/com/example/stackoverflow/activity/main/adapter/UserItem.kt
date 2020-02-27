@@ -1,4 +1,4 @@
-package com.example.stackoverflow.activity.adapter
+package com.example.stackoverflow.activity.main.adapter
 
 import android.annotation.SuppressLint
 import android.view.View
@@ -20,12 +20,16 @@ class UserItem(val item: Item) : DisplayableItem {
 }
 
 class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    @SuppressLint("SetTextI18n")
     fun onBind(item: UserItem) {
         itemView.tvUserName.text = item.item.displayName
         itemView.tvReputation.text = item.item.reputation.toString()
-        itemView.tvLocation.text = item.item.location
+        if (item.item.location == null)
+            itemView.tvLocation.text = "Unknown location"
+        else
+            itemView.tvLocation.text = "Location: ${item.item.location}"
         itemView.tvLastAccessDate.text =
-            convertLongToTime(item.item.lastAccessDate)
+            "Last access date: ${convertLongToTime(item.item.lastAccessDate)}"
         Picasso.get().load(item.item.profileImage)
             .into(itemView.imvUserAvatar)
     }
@@ -33,7 +37,7 @@ class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     @SuppressLint("SimpleDateFormat")
     fun convertLongToTime(time: Long?): String {
         val date = Date(time!!)
-        val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+        val format = SimpleDateFormat("MM/dd/yyyy HH:mm")
         return format.format(date)
     }
 }
