@@ -4,7 +4,9 @@ import android.util.Log
 import com.example.base.BaseViewModel
 import com.example.base.Event
 import com.example.base.adapter.DisplayableItem
+import com.example.domain.model.User
 import com.example.domain.usecase.GetUserListUseCase
+import com.example.stackoverflow.activity.adapter.UserItem
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -34,6 +36,10 @@ class UserListViewModel(private val getUserListUseCase: GetUserListUseCase) :
                     }
                 }
             ).addToDisposables()
+    }
+
+    private fun covertDataToUI(userList: List<User>): List<DisplayableItem> {
+        return userList.map { UserItem(it) }
     }
 
 }
