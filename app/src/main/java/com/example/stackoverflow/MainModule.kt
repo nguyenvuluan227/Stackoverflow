@@ -3,8 +3,8 @@ package com.example.stackoverflow
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import com.example.base.di.ActivityContext
-import com.example.stackoverflow.activity.UserListViewModel
-import com.example.stackoverflow.activity.UserListViewModelFactory
+import com.example.stackoverflow.activity.main.UserListViewModel
+import com.example.stackoverflow.activity.main.UserListViewModelFactory
 import dagger.Module
 import dagger.Provides
 

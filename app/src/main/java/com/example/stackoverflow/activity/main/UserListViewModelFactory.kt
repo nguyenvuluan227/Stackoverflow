@@ -1,4 +1,4 @@
-package com.example.stackoverflow.activity
+package com.example.stackoverflow.activity.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +10,8 @@ class UserListViewModelFactory @Inject constructor(
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return UserListViewModel(getUserListUseCase) as T
+        return UserListViewModel(
+            getUserListUseCase
+        ) as T
     }
 }

@@ -1,18 +1,19 @@
-package com.example.stackoverflow.activity
+package com.example.stackoverflow.activity.main
 
 import android.util.Log
 import com.example.base.BaseViewModel
 import com.example.base.Event
 import com.example.base.adapter.DisplayableItem
-import com.example.domain.model.User
+import com.example.domain.model.Item
 import com.example.domain.usecase.GetUserListUseCase
-import com.example.stackoverflow.activity.adapter.UserItem
+import com.example.stackoverflow.activity.main.adapter.UserItem
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class UserListViewModel(private val getUserListUseCase: GetUserListUseCase) :
     BaseViewModel<UserListState>() {
-    override fun initState(): UserListState = UserListState()
+    override fun initState(): UserListState =
+        UserListState()
 
     fun getListUser(page: Int, pageSize: Int, pageSite: String) {
         getUserListUseCase.createObservable(GetUserListUseCase.Params(page, pageSize, pageSite))
@@ -24,7 +25,7 @@ class UserListViewModel(private val getUserListUseCase: GetUserListUseCase) :
                     setState {
                         copy(
                             error = Event(false),
-                            uiItems = listOf()
+                            uiItems = convertDataToUI(it.items!!)
                         )
                     }
                 },
@@ -38,8 +39,12 @@ class UserListViewModel(private val getUserListUseCase: GetUserListUseCase) :
             ).addToDisposables()
     }
 
-    private fun covertDataToUI(userList: List<User>): List<DisplayableItem> {
-        return userList.map { UserItem(it) }
+    private fun convertDataToUI(userList: List<Item>): List<DisplayableItem> {
+        return userList.map {
+            UserItem(
+                it
+            )
+        }
     }
 
 }

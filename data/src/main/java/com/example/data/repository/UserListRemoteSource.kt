@@ -17,5 +17,4 @@ class UserListRemoteSource @Inject constructor(
             userApiMapper.mapToDomain(it)
         }
     }
-
 }
