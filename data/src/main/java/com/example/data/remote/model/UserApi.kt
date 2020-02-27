@@ -1,8 +1,10 @@
 package com.example.data.remote.model
 
+import com.google.gson.annotations.SerializedName
+
 data class UserApi(
-    val items: List<ItemApi>? = null,
-    val hasMore: Boolean? = null,
-    val quotaMax: Int? = null,
-    val quotaRemaining: Int? = null
+    @SerializedName("items") val items: List<ItemApi>? = null,
+    @SerializedName("has_more") val hasMore: Boolean? = null,
+    @SerializedName("quota_max") val quotaMax: Int? = null,
+    @SerializedName("quota_remaining") val quotaRemaining: Int? = null
 )
