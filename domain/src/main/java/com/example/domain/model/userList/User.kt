@@ -1,4 +1,4 @@
-package com.example.domain.model
+package com.example.domain.model.userList
 
 data class User(
     val items: List<Item>? = null,

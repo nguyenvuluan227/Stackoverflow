@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.base.adapter.DisplayableItem
-import com.example.domain.model.Item
+import com.example.domain.model.userList.Item
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_user_list.view.*
 import java.text.SimpleDateFormat
@@ -21,7 +21,7 @@ class UserItem(val item: Item) : DisplayableItem {
 
 class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     @SuppressLint("SetTextI18n")
-    fun onBind(item: UserItem) {
+    fun onBind(item: UserItem, onItemCLicked: ((userId: Int) -> Unit)? = null) {
         itemView.tvUserName.text = item.item.displayName
         itemView.tvReputation.text = item.item.reputation.toString()
         if (item.item.location == null)
@@ -32,6 +32,8 @@ class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             "Last access date: ${convertLongToTime(item.item.lastAccessDate)}"
         Picasso.get().load(item.item.profileImage)
             .into(itemView.imvUserAvatar)
+
+        itemView.setOnClickListener { onItemCLicked?.invoke(item.item.userId!!) }
     }
 
     @SuppressLint("SimpleDateFormat")

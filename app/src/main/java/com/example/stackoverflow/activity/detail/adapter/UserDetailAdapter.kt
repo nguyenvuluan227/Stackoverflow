@@ -1,4 +1,4 @@
-package com.example.stackoverflow.activity.main.adapter
+package com.example.stackoverflow.activity.detail.adapter
 
 import android.content.Context
 import android.view.ViewGroup
@@ -9,20 +9,18 @@ import com.example.base.di.ActivityContext
 import com.example.stackoverflow.R
 import javax.inject.Inject
 
-class UserListAdapter @Inject constructor(@ActivityContext context: Context) :
+class UserDetailAdapter @Inject constructor(@ActivityContext context: Context) :
     BaseListAdapter<DisplayableItem, RecyclerView.ViewHolder>(context) {
 
     companion object {
-        const val ITEM_USER = 1
+        const val ITEM_USER_DETAIL = 1
     }
-
-    var onItemClicked: ((userId: Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            ITEM_USER -> {
-                val itemView = inflater.inflate(R.layout.item_user_list, parent, false)
-                UserViewHolder(itemView)
+            ITEM_USER_DETAIL -> {
+                val itemView = inflater.inflate(R.layout.item_user_detail, parent, false)
+                UserDetailViewHolder(itemView)
             }
             else -> throw IllegalArgumentException("Do not support view type: $viewType")
         }
@@ -31,10 +29,10 @@ class UserListAdapter @Inject constructor(@ActivityContext context: Context) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
         return when (item.itemType) {
-            ITEM_USER -> {
-                val userItem = item as UserItem
-                val userViewHolder = holder as UserViewHolder
-                userViewHolder.onBind(userItem, onItemClicked)
+            ITEM_USER_DETAIL -> {
+                val userDetail = item as UserDetailItem
+                val userViewHolder = holder as UserDetailViewHolder
+                userViewHolder.onBind(userDetail)
             }
             else -> throw IllegalArgumentException("Do not support view type: ${item.itemType}")
         }

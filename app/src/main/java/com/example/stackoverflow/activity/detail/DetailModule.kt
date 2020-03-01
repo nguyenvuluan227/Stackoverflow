@@ -1,4 +1,4 @@
-package com.example.stackoverflow.activity.main
+package com.example.stackoverflow.activity.detail
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
@@ -8,20 +8,20 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class MainModule {
+class DetailModule {
 
     @Provides
     @PerActivity
     @ActivityContext
-    fun provideActivityContext(activity: MainActivity): Context = activity
+    fun provideActivityContext(activity: DetailActivity): Context = activity
 
     @Provides
     @PerActivity
     fun provideViewModel(
-        activity: MainActivity,
-        factory: UserListViewModelFactory
-    ): UserListViewModel {
+        activity: DetailActivity,
+        factory: UserDetailViewModelFactory
+    ): UserDetailViewModel {
         return ViewModelProvider(activity, factory)
-            .get(UserListViewModel::class.java)
+            .get(UserDetailViewModel::class.java)
     }
 }

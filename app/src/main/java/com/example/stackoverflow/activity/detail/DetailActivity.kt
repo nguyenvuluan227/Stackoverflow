@@ -1,21 +1,19 @@
-package com.example.stackoverflow.activity.main
+package com.example.stackoverflow.activity.detail
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.stackoverflow.R
-import com.example.stackoverflow.activity.detail.DetailActivity
-import com.example.stackoverflow.activity.main.adapter.UserListAdapter
+import com.example.stackoverflow.activity.detail.adapter.UserDetailAdapter
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_detail.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasAndroidInjector {
+class DetailActivity : AppCompatActivity(), HasAndroidInjector {
 
     companion object {
         const val USER_ID = "userId"
@@ -24,22 +22,29 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
     @Inject
-    lateinit var viewModel: UserListViewModel
+    lateinit var viewModel: UserDetailViewModel
     @Inject
-    lateinit var adapter: UserListAdapter
+    lateinit var adapter: UserDetailAdapter
 
     private lateinit var linearLayout: LinearLayoutManager
+
+    private var userId: Int? = null
     private var page: Int = 1
     private var pageSize: Int = 30
 
-
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_detail)
+        getData()
         initView()
+    }
+
+    private fun getData() {
+        userId = intent.getIntExtra(USER_ID, 0)
     }
 
     private fun initView() {
@@ -48,16 +53,15 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
             this.initialPrefetchItemCount = 30
         }
 
-        rvMain.layoutManager = linearLayout
-        rvMain.adapter = adapter.apply { onItemClicked = { onSubmit(it) } }
+        rvDetail.layoutManager = linearLayout
+        rvDetail.adapter = adapter
 
-        viewModel.state.observe(this, Observer { adapter.submitList(it.uiItems) })
-        viewModel.getListUser(page, pageSize, getString(R.string.page_site))
+
+        viewModel.state.observe(this, Observer {
+            adapter.submitList(it.uiItems)
+        })
+        viewModel.getUserDetail(userId!!, page, pageSize, getString(R.string.page_site))
+
     }
 
-    private fun onSubmit(userId: Int) {
-        val intent = Intent(this@MainActivity, DetailActivity::class.java)
-        intent.putExtra(USER_ID, userId)
-        startActivity(intent)
-    }
 }

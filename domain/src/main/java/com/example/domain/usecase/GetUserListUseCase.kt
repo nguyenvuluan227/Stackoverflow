@@ -1,7 +1,7 @@
 package com.example.domain.usecase
 
 import com.example.domain.UseCase
-import com.example.domain.model.User
+import com.example.domain.model.userList.User
 import com.example.domain.repository.UserListRepository
 import io.reactivex.Single
 import javax.inject.Inject

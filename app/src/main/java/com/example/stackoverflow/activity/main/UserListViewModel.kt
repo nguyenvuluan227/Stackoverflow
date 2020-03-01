@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.base.BaseViewModel
 import com.example.base.Event
 import com.example.base.adapter.DisplayableItem
-import com.example.domain.model.Item
+import com.example.domain.model.userList.Item
 import com.example.domain.usecase.GetUserListUseCase
 import com.example.stackoverflow.activity.main.adapter.UserItem
 import io.reactivex.android.schedulers.AndroidSchedulers

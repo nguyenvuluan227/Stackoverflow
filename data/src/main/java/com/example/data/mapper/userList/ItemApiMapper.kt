@@ -1,7 +1,7 @@
-package com.example.data.mapper
+package com.example.data.mapper.userList
 
-import com.example.data.remote.model.ItemApi
-import com.example.domain.model.Item
+import com.example.data.remote.model.userList.ItemApi
+import com.example.domain.model.userList.Item
 import javax.inject.Inject
 
 class ItemApiMapper @Inject constructor(

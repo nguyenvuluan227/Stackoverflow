@@ -1,7 +1,7 @@
-package com.example.data.mapper
+package com.example.data.mapper.userList
 
-import com.example.data.remote.model.BadgeCountsApi
-import com.example.domain.model.BadgeCounts
+import com.example.data.remote.model.userList.BadgeCountsApi
+import com.example.domain.model.userList.BadgeCounts
 import javax.inject.Inject
 
 class BadgeCountsApiMapper @Inject constructor() {

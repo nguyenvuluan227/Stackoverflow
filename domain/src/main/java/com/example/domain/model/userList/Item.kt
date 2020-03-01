@@ -1,4 +1,4 @@
-package com.example.domain.model
+package com.example.domain.model.userList
 
 data class Item(
     val badgeCounts: BadgeCounts? = null,
