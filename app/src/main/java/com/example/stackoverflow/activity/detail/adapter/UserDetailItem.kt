@@ -19,11 +19,12 @@ class UserDetailItem(val items: UserItems) : DisplayableItem {
 }
 
 class UserDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    @SuppressLint("SetTextI18n")
     fun onBind(item: UserDetailItem) {
-        itemView.tvReputationType.text = item.items.reputationChange.toString()
-        itemView.tvChange.text = item.items.reputationChange.toString()
-        itemView.tvCreatedAt.text = item.items.creationDate.toString()
-        itemView.tvPostId.text = item.items.postId.toString()
+        itemView.tvReputationType.text = "Reputation Change: ${item.items.reputationChange}"
+        itemView.tvChange.text = "Change: ${item.items.reputationChange}"
+        itemView.tvCreatedAt.text = "Created At: ${convertLongToTime(item.items.creationDate)}"
+        itemView.tvPostId.text = "Post ID: ${item.items.postId}"
     }
 }
 

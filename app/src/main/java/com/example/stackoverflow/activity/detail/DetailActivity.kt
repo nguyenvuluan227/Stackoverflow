@@ -1,9 +1,11 @@
 package com.example.stackoverflow.activity.detail
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.base.onEvent
 import com.example.stackoverflow.R
 import com.example.stackoverflow.activity.detail.adapter.UserDetailAdapter
 import dagger.android.AndroidInjection
@@ -58,10 +60,22 @@ class DetailActivity : AppCompatActivity(), HasAndroidInjector {
 
 
         viewModel.state.observe(this, Observer {
-            adapter.submitList(it.uiItems)
+
+            onEvent(it.isLoading) {
+                if (this) {
+                    pbLoading.visibility = View.VISIBLE
+                    clDetail.alpha = 0.5F
+                } else {
+                    pbLoading.visibility = View.GONE
+                    clDetail.alpha = 1F
+                }
+            }
+
+            onEvent(it.isLoadingSuccess) {
+                adapter.submitList(it.uiItems)
+            }
         })
+
         viewModel.getUserDetail(userId!!, page, pageSize, getString(R.string.page_site))
-
     }
-
 }

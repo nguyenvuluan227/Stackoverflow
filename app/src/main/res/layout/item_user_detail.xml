@@ -1,38 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/bg_item_user_list"
+    android:elevation="16dp"
+    android:foreground="?attr/selectableItemBackground">
+
 
     <TextView
         android:id="@+id/tvReputationType"
+        style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_reputation"
+        android:drawablePadding="4dp"
+        android:padding="6dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Reputation Type" />
 
     <TextView
         android:id="@+id/tvChange"
+        style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_change"
+        android:drawablePadding="4dp"
+        android:padding="6dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvReputationType" />
+        app:layout_constraintTop_toBottomOf="@id/tvReputationType"
+        tools:text="Change" />
 
     <TextView
         android:id="@+id/tvCreatedAt"
+        style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_location"
+        android:drawablePadding="4dp"
+        android:padding="6dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCreatedAt" />
+        app:layout_constraintTop_toBottomOf="@id/tvChange"
+        tools:text="Created At" />
 
     <TextView
         android:id="@+id/tvPostId"
+        style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/ic_id_card"
+        android:drawablePadding="4dp"
+        android:padding="6dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCreatedAt" />
+        app:layout_constraintTop_toBottomOf="@id/tvCreatedAt"
+        tools:text="Post ID" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

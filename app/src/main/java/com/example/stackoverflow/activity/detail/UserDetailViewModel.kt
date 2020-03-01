@@ -16,7 +16,10 @@ class UserDetailViewModel(private val getUserDetailUseCase: GetUserDetailUseCase
 
     fun getUserDetail(userId: Int, page: Int, pageSize: Int, site: String) {
         setState {
-            copy(isLoading = Event(true))
+            copy(
+                isLoading = Event(true),
+                isLoadingSuccess = Event(false)
+            )
         }
         getUserDetailUseCase.createObservable(
             GetUserDetailUseCase.Params(
@@ -35,7 +38,8 @@ class UserDetailViewModel(private val getUserDetailUseCase: GetUserDetailUseCase
                         copy(
                             error = Event(false),
                             uiItems = convertDataToUI(it.userItems),
-                            isLoading = Event(false)
+                            isLoading = Event(false),
+                            isLoadingSuccess = Event(true)
                         )
                     }
                 },
@@ -60,5 +64,6 @@ class UserDetailViewModel(private val getUserDetailUseCase: GetUserDetailUseCase
 data class UserDetailState(
     val error: Event<Boolean>? = null,
     val uiItems: List<DisplayableItem> = listOf(),
-    val isLoading: Event<Boolean>? = null
+    val isLoading: Event<Boolean>? = null,
+    val isLoadingSuccess: Event<Boolean>? = null
 )

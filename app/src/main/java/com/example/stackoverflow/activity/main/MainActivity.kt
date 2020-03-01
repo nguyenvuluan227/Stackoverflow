@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         rvMain.adapter = adapter.apply { onItemClicked = { onSubmit(it) } }
 
         viewModel.state.observe(this, Observer {
+
             onEvent(it.isLoading) {
                 if (this) {
                     pbLoading.visibility = View.VISIBLE
@@ -62,8 +63,6 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
                     pbLoading.visibility = View.GONE
                     clMain.alpha = 1F
                 }
-
-
             }
 
             onEvent(it.isLoadingSuccess) {
@@ -71,8 +70,8 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
                     adapter.submitList(it.uiItems)
                 }
             }
-
         })
+
         viewModel.getListUser(page, pageSize, getString(R.string.page_site))
     }
 
