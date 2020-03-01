@@ -2,4 +2,14 @@
     <string name="app_name">Stackoverflow</string>
     <string name="page_site">stackoverflow</string>
     <string name="user_id">userId</string>
+    <string name="text_Banner"><![CDATA[We <3 people who code]]></string>
+    <string name="text_description">We build products that empower developers and connect them to solutions that enable productivity, growth, and discovery.</string>
+    <string name="text_browse_jobs">Browse jobs</string>
+    <string name="text_jobs_description">Find the right job through high quality listings and search for roles based on title, technology stack, salary, location, and more.</string>
+    <string name="text_public_description">Get answers to more than 16.5 million questions and give back by sharing your knowledge with others. Sign up for an account.</string>
+    <string name="text_private_description"><![CDATA[Level up with Stack Overflow while you work. Share knowledge privately with your coworkers using our flagship Q&A engine.]]></string>
+    <string name="text_public">Public Q and A</string>
+    <string name="text_private">Private Q and A</string>
+    <string name="tv_dev">For developers, by developers</string>
+    <string name="text_dev_description">Stack Overflow is an open community for anyone that codes. We help you get answers to your toughest coding questions, share knowledge with your coworkers in private, and find your next dream job.</string>
 </resources>

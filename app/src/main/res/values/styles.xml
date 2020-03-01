@@ -15,4 +15,30 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <style name="TextTitle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorTextName</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextDescription" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorTextDescription</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="TextBanner" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="TextLogo" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
 </resources>

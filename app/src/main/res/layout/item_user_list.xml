@@ -4,65 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/bg_item_user_list"
+    android:elevation="16dp"
     android:foreground="?attr/selectableItemBackground">
 
-    <ImageView
-        android:id="@+id/imvUserAvatar"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvUserAvatar"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_margin="10dp"
-        android:fitsSystemWindows="true"
-        android:scaleType="fitXY"
+        android:elevation="16dp"
+        app:cardCornerRadius="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imvUserAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:scaleType="fitXY" />
+
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
         android:id="@+id/tvUserName"
+        style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:padding="8dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/imvUserAvatar"
-        app:layout_constraintTop_toTopOf="@id/imvUserAvatar"
+        android:layout_marginLeft="6dp"
+        android:drawableStart="@drawable/ic_user"
+        android:drawablePadding="4dp"
+        android:padding="6dp"
+        app:layout_constraintStart_toEndOf="@id/cvUserAvatar"
+        app:layout_constraintTop_toTopOf="@id/cvUserAvatar"
         tools:text="User Name" />
 
     <TextView
         android:id="@+id/tvReputation"
+        style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="12dp"
-        android:padding="8dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:drawableStart="@drawable/ic_reputation"
+        android:drawablePadding="4dp"
+        android:padding="6dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvUserName"
+        app:layout_constraintTop_toTopOf="@id/cvUserAvatar"
         tools:text="Reputation" />
 
     <TextView
         android:id="@+id/tvLocation"
+        style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:padding="8dp"
-        android:textSize="14sp"
-        android:textStyle="italic"
+        android:drawableStart="@drawable/ic_location"
+        android:drawablePadding="4dp"
+        android:padding="6dp"
         app:layout_constraintStart_toStartOf="@id/tvUserName"
         app:layout_constraintTop_toBottomOf="@id/tvUserName"
         tools:text="Location" />
 
     <TextView
         android:id="@+id/tvLastAccessDate"
+        style="@style/TextDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:drawableStart="@drawable/ic_calendar"
+        android:drawablePadding="4dp"
+        android:padding="6dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/cvUserAvatar"
         app:layout_constraintStart_toStartOf="@id/tvLocation"
-        app:layout_constraintTop_toBottomOf="@id/tvLocation"
         tools:text="Last Access Date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

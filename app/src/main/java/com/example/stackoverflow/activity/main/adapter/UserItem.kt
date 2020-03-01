@@ -27,9 +27,8 @@ class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         if (item.item.location == null)
             itemView.tvLocation.text = "Unknown location"
         else
-            itemView.tvLocation.text = "Location: ${item.item.location}"
-        itemView.tvLastAccessDate.text =
-            "Last access date: ${convertLongToTime(item.item.lastAccessDate)}"
+            itemView.tvLocation.text = item.item.location
+        itemView.tvLastAccessDate.text = convertLongToTime(item.item.lastAccessDate)
         Picasso.get().load(item.item.profileImage)
             .into(itemView.imvUserAvatar)
 

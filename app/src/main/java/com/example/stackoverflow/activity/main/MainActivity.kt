@@ -2,9 +2,11 @@ package com.example.stackoverflow.activity.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.base.onEvent
 import com.example.stackoverflow.R
 import com.example.stackoverflow.activity.detail.DetailActivity
 import com.example.stackoverflow.activity.main.adapter.UserListAdapter
@@ -51,7 +53,26 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         rvMain.layoutManager = linearLayout
         rvMain.adapter = adapter.apply { onItemClicked = { onSubmit(it) } }
 
-        viewModel.state.observe(this, Observer { adapter.submitList(it.uiItems) })
+        viewModel.state.observe(this, Observer {
+            onEvent(it.isLoading) {
+                if (this) {
+                    pbLoading.visibility = View.VISIBLE
+                    clMain.alpha = 0.5F
+                } else {
+                    pbLoading.visibility = View.GONE
+                    clMain.alpha = 1F
+                }
+
+
+            }
+
+            onEvent(it.isLoadingSuccess) {
+                if (this) {
+                    adapter.submitList(it.uiItems)
+                }
+            }
+
+        })
         viewModel.getListUser(page, pageSize, getString(R.string.page_site))
     }
 

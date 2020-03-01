@@ -16,6 +16,12 @@ class UserListViewModel(private val getUserListUseCase: GetUserListUseCase) :
         UserListState()
 
     fun getListUser(page: Int, pageSize: Int, pageSite: String) {
+        setState {
+            copy(
+                isLoading = Event(true),
+                isLoadingSuccess = Event(false)
+            )
+        }
         getUserListUseCase.createObservable(GetUserListUseCase.Params(page, pageSize, pageSite))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -25,7 +31,9 @@ class UserListViewModel(private val getUserListUseCase: GetUserListUseCase) :
                     setState {
                         copy(
                             error = Event(false),
-                            uiItems = convertDataToUI(it.items!!)
+                            uiItems = convertDataToUI(it.items!!),
+                            isLoading = Event(false),
+                            isLoadingSuccess = Event(true)
                         )
                     }
                 },
@@ -45,5 +53,6 @@ class UserListViewModel(private val getUserListUseCase: GetUserListUseCase) :
 data class UserListState(
     val error: Event<Boolean>? = null,
     val uiItems: List<DisplayableItem> = listOf(),
-    val isLoading: Event<Boolean>? = null
+    val isLoading: Event<Boolean>? = null,
+    val isLoadingSuccess: Event<Boolean>? = null
 )
